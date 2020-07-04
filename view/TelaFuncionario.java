@@ -136,7 +136,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 860, 40));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Setor:");
+        jLabel3.setText("*Setor:");
         jLabel3.setToolTipText("");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, 50, 37));
 
@@ -217,14 +217,14 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         getContentPane().add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 60, 433, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Nome:");
+        jLabel4.setText("*Nome:");
         jLabel4.setToolTipText("");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 50, 37));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Usuário:");
+        jLabel5.setText("*Usuário:");
         jLabel5.setToolTipText("");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 50, 37));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 90, 60, 37));
 
         txtUsuario.setName("txtNomeFuncionario"); // NOI18N
         jScrollPane6.setViewportView(txtUsuario);
@@ -234,7 +234,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         getContentPane().add(cbSetor, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 100, 150, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Cpf:");
+        jLabel6.setText("*Cpf:");
         jLabel6.setToolTipText("");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 50, 50, 37));
 
@@ -254,9 +254,9 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         getContentPane().add(cbIsGestor, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 140, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Horário:");
+        jLabel9.setText("*Horário:");
         jLabel9.setToolTipText("");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, 50, 37));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 70, 37));
 
         getContentPane().add(cbHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, 340, -1));
 
@@ -282,7 +282,7 @@ public class TelaFuncionario extends javax.swing.JInternalFrame {
         getContentPane().add(txtCpfFunc, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 60, 150, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel11.setText("Permissão:");
+        jLabel11.setText("*Permissão:");
         jLabel11.setToolTipText("");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 80, 37));
 

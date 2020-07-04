@@ -14,7 +14,12 @@ public class PermissaoUsuarioDao {
     Connection con = new ConnectionFactory().getConnection();
     PreparedStatement stmt;
     ResultSet rs;
-
+    /**
+     * Método para listar todas as permissões na tela de funcionários 
+     *
+     * @author Lucas Silva    
+     * @return List - retornar as permissões 
+     */
     public List<PermissaoUsuario> listarTodasAsPermissoes() {
         ArrayList<PermissaoUsuario> permissoes = new ArrayList<PermissaoUsuario>();
         String sql = "Select id, nome from permissao";
@@ -37,7 +42,13 @@ public class PermissaoUsuarioDao {
         }
         return permissoes;
     }
-
+    /**
+     * Método para retornar o id da permissão 
+     *
+     * @author Lucas Silva   
+     * @param nome - nome da permissão para retornar o id
+     * @return int - retornar o id da permissão
+     */
     public int pegarIdPermissao(String nome) {
         int idPermissao = 0;
         String sql = "Select id from permissao where nome = ?";

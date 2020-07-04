@@ -1,5 +1,9 @@
 package pontoDeControle.services;
-
+/**Classe fazer o a comunicação entre a View e o banco de dados para manipular objetos do tipo Horario
+* @author Lucas Silva
+* @version 1.00
+* @since Release 01 da aplicação
+*/
 import java.util.List;
 import pontoDeControle.dao.HorarioDao;
 import pontoDeControle.model.Horario;

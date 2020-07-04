@@ -1,32 +1,35 @@
-
 package pontoDeControle.view;
 
 import java.awt.Image;
 import java.net.URL;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
 import pontoDeControle.model.Funcionario;
+import pontoDeControle.model.Hora;
 import pontoDeControle.model.Horario;
 import pontoDeControle.services.FuncionarioService;
+import pontoDeControle.services.HoraService;
 import pontoDeControle.services.HorarioService;
 import pontoDeControle.threads.ControleDeAtividade;
 
-
 public class TelaPrincipal extends javax.swing.JFrame {
+
     public static String horaInicial = null;
     public Funcionario usuario;
+
     public TelaPrincipal(String horaInicial, Funcionario usuario) {
         initComponents();
         this.horaInicial = horaInicial;
         this.usuario = usuario;
         lblInicio.setText(horaInicial);
-        if(usuario.getIdPermsissao() == 1 || usuario.getIdPermsissao() == 3 ){
+        if (usuario.getIdPermsissao() == 1 || usuario.getIdPermsissao() == 3) {
             menuFuncionario.setEnabled(true);
             menuHorarios.setEnabled(true);
             menuRelatórios.setEnabled(true);
             menuSetor.setEnabled(true);
         }
     }
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -49,6 +52,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setTitle("Bem vindo");
         setPreferredSize(new java.awt.Dimension(1114, 769));
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -149,7 +158,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(dskPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 94, Short.MAX_VALUE))
+                .addGap(0, 91, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(68, 68, 68)
                 .addComponent(jLabel1)
@@ -180,7 +189,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuHorariosCadastrarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        programarParaFecharOSitema(); 
+        programarParaFecharOSitema();
     }//GEN-LAST:event_formWindowOpened
 
     private void menuRelatoriosHorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuRelatoriosHorasActionPerformed
@@ -188,6 +197,26 @@ public class TelaPrincipal extends javax.swing.JFrame {
         telaPlanilhaFuncionario.setVisible(true);
         dskPrincipal.add(telaPlanilhaFuncionario);
     }//GEN-LAST:event_menuRelatoriosHorasActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+/**
+        HoraService service = new HoraService();
+        Hora hora = new Hora();
+        Date data = new Date(System.currentTimeMillis());
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String horaFinal = formatter.format(data);
+        hora.setHoraFinal(horaFinal);
+        hora.setIdFunc(usuario.getId());
+        int fechar = service.updateHora(hora);
+        if(fechar == 1){
+            System.exit(0);
+        }
+        */
+    }//GEN-LAST:event_formWindowClosing
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
 
     private void programarParaFecharOSitema() {
         String usuarioNome = System.getProperty("user.name");
@@ -198,10 +227,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         HorarioService horarioService = new HorarioService();
         horario = horarioService.getHorarioById(usuario.getIdHorario());
         ControleDeAtividade controleDeAtividade = new ControleDeAtividade(horario.getQtdHoras());
-        
+
     }
-
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

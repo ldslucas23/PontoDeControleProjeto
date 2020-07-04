@@ -85,16 +85,16 @@ public class TelaCarregamento extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
 
-        String usuarioNome = System.getProperty("user.name");
-        Funcionario usuario = new Funcionario();
+        String usuarioNome = System.getProperty("user.name");        
         FuncionarioService service = new FuncionarioService();
-        usuario = service.getFuncionarioByUsuario(usuarioNome);
+        Funcionario usuario = service.getFuncionarioByUsuario(usuarioNome); 
         HoraService horaService = new HoraService();
         Hora hora = new Hora();
         String horaInicialTexto = null;
-        if (usuario.getId() != 0) {
-            if (horaService.isAindaHoje(usuario.getId())) {
-                if (horaService.diferencaHoras(usuario.getId()) > 11) {
+
+      
+            
+                if (horaService.diferencaHoras(usuario.getId()) > 11 ) {
 
                     Date data = new Date(System.currentTimeMillis());
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -107,7 +107,7 @@ public class TelaCarregamento extends javax.swing.JFrame {
                     hora.setHoraInicial(horaInicial);
                     hora.setDataInicial(horaInicial);
                     horaService.salvarHora(hora);
-                }
+                
 
                 TelaPrincipal telaPrincipal = new TelaPrincipal(horaInicialTexto, usuario);
                 telaPrincipal.show();
@@ -116,10 +116,6 @@ public class TelaCarregamento extends javax.swing.JFrame {
             } else {
                 jLabel1.setText("DESCULPE, NÃO CONSEGUIMOS INICALIZAR O SISTEMA");
             }
-
-        } else {
-            jLabel1.setText("DESCULPE, NÃO CONSEGUIMOS INICALIZAR O SISTEMA");
-        }
     }//GEN-LAST:event_formWindowOpened
 
 

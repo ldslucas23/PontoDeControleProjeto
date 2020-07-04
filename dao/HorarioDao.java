@@ -15,7 +15,13 @@ public class HorarioDao extends Horario {
     Connection con = new ConnectionFactory().getConnection();
     PreparedStatement stmt;
     ResultSet rs;
-
+    /**
+     * Método para inserir ou alterar um horário no sistema
+     *
+     * @author Lucas Silva
+     * @param horario - Objeto com as informações para serem inseridas ou alteradas
+     * @return String - valor da mensagem para ser exibido na tela  
+     */
     public String insert(Horario horario) {
         if (horario.getId() != 0) {
             String sql = "update horario set descricao = ?, qtdHoras=?, noturno=?, inativo=?  where id = ?";
@@ -55,7 +61,11 @@ public class HorarioDao extends Horario {
         }
 
     }
-
+    /**
+     * Método para listar os horários na tela de horários 
+     * @author Lucas Silva    
+     * @return List - retornar os funcionários gestores
+     */
     public List<Horario> listarHorarios() {
         ArrayList<Horario> horarios = new ArrayList<Horario>();
         String sql = "Select id, descricao, qtdHoras, noturno, inativo from horario ";
@@ -79,7 +89,12 @@ public class HorarioDao extends Horario {
         }
         return horarios;
     }
-
+    /**
+     * Método para listar os horários na tela de horários pela descrição
+     * @author Lucas Silva
+     * @param descricao - Descrição para ser comparada na consulta
+     * @return List - retornar os funcionários gestores
+     */
     public List<Horario> listarHorariosPelaDescricao(String descricao) {
         ArrayList<Horario> horarios = new ArrayList<Horario>();
         String sql = "Select id from horario where descricao = ?";
@@ -100,7 +115,12 @@ public class HorarioDao extends Horario {
         }
         return horarios;
     }
-
+    /**
+     * Método para listar os horários na tela de horários pelo id
+     * @author Lucas Silva
+     * @param idHorario - id para ser comparado na consulta
+     * @return Horario - Objeto preenchido pela consulta
+     */
     public Horario getHorarioById(int idHorario) {
         Horario horario = new Horario();
         String sql = "Select descricao, qtdHoras, noturno,inativo from horario where id = ?";
@@ -122,7 +142,12 @@ public class HorarioDao extends Horario {
         }
         return horario;
     }
-
+    /**
+     * Método para excluir os horários  pelo id
+     * @author Lucas Silva
+     * @param id - id para ser comparado na consulta
+     * @return String - Valor da mensagem a ser exibida na tela
+     */
     public String removeById(int id) {
         String sql = "Delete from horario where id = ?";
         try {

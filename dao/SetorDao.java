@@ -16,7 +16,14 @@ public class SetorDao extends Setor {
     Connection con = new ConnectionFactory().getConnection();
     PreparedStatement stmt;
     ResultSet rs;
-
+   
+    /**
+     * Método para inserir ou alterar um setor no sistema
+     *
+     * @author Lucas Silva
+     * @param setor - Objeto com as informações para serem inseridas ou alteradas
+     * @return String - valor da mensagem para ser exibido na tela  
+     */
     public String insert(Setor setor) {
         if (setor.getId() != 0) {
             String sql = "update setor set nome = ? where id = ?";
@@ -53,7 +60,13 @@ public class SetorDao extends Setor {
         }
 
     }
-
+    /**
+     * Método para listar os setores pesquisados pelo nome
+     *
+     * @author Lucas Silva    
+     * @param nome - nome do setor a ser comparado na consulta
+     * @return List - retornar os setores
+     */
     public List<Setor> listarSetores(String nome) {
         ArrayList<Setor> setores = new ArrayList<Setor>();
         String sql = "Select id, nome from setor where nome like ? ";
@@ -78,7 +91,12 @@ public class SetorDao extends Setor {
         return setores;
     }
     
-
+    /**
+     * Método para listar todos os  setores 
+     *
+     * @author Lucas Silva    
+     * @return List - retornar uma lista de setores preenchido
+     */
     public List<Setor> listarTodosSetores() {
         ArrayList<Setor> setores = new ArrayList<Setor>();
         String sql = "Select id, nome from setor";
@@ -101,7 +119,13 @@ public class SetorDao extends Setor {
         }
         return setores;
     }
-
+    /**
+     * Método para deletar um setor pelo id 
+     *
+     * @author Lucas Silva    
+     * @param id - id do setor a ser deletado
+     * @return String - Valor da mensangem a ser exibida na tela
+     */
     public String removeById(int id) {
         String sql = "Delete from setor where id = ?";
         try {
@@ -119,7 +143,5 @@ public class SetorDao extends Setor {
         }
     }
 
-    public boolean gerarRelatorioFuncionario(Funcionario funcionario) {
-        return true;
-    }
+
 }

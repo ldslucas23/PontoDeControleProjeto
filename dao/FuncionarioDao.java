@@ -15,6 +15,13 @@ public class FuncionarioDao extends Funcionario {
     PreparedStatement stmt;
     ResultSet rs;
 
+    /**
+     * Método para inserir ou alterar um funcionário no sistema
+     *
+     * @author Lucas Silva
+     * @param funcionario - Objeto com as informações para serem inseridas ou alteradas
+     * @return String - valor da mensagem para ser exibido na tela  
+     */
     public String insert(Funcionario funcionario) {
         if (funcionario.getId() != 0) {
             String sql = "update funcionario set nome = ?, cpf = ?, usuarioSistema = ?, idGestor = ?, isGestor = ?, idHorario = ?, email= ?, idSetor = ?, idPermissao = ? where id = ?";
@@ -65,7 +72,12 @@ public class FuncionarioDao extends Funcionario {
         }
 
     }
-
+    /**
+     * Método para listar os gestores na tela de funcionários u
+     *
+     * @author Lucas Silva    
+     * @return List - retornar os funcionários gestores
+     */
     public List<Funcionario> listarGestores() {
         ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
         String sql = "Select id, nome, email from funcionario where isGestor = 'T' ";
@@ -89,7 +101,12 @@ public class FuncionarioDao extends Funcionario {
         }
         return funcionarios;
     }
-
+    /**
+     * Método para listar todos os funcionários 
+     *
+     * @author Lucas Silva    
+     * @return List - retornar os funcionários 
+     */
     public List<Funcionario> listarTodosFuncionarios() {
         ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
         String sql = "Select id, nome, email from funcionario";
@@ -113,7 +130,13 @@ public class FuncionarioDao extends Funcionario {
         }
         return funcionarios;
     }
-
+    /**
+     * Método para retornar o nome do gestor pelo seu id 
+     *
+     * @author Lucas Silva   
+     * @param id - id do gestor para retornar o nome
+     * @return String - retornar o nome do gestor
+     */
     public String getNomeGestorById(int id) {
         String sql = "Select nome from funcionario where id = ? ";
         Funcionario funcionario = new Funcionario();
@@ -134,7 +157,13 @@ public class FuncionarioDao extends Funcionario {
         }
         return funcionario.getNome();
     }
-
+    /**
+     * Método para retornar o funcionario pelo seu id 
+     *
+     * @author Lucas Silva   
+     * @param id - id do funcionário que será pesquisado
+     * @return Funcionario - retornar o objeto funcionário preenchido  
+     */
     public Funcionario getFuncionarioById(int id) {
         Funcionario funcionario = new Funcionario();
         String sql = "Select funcionario.idPermissao, permissao.nome as NomePermissao, funcionario.id, funcionario.nome, funcionario.cpf, funcionario.usuarioSistema,funcionario.idGestor,funcionario.isGestor,funcionario.idHorario,funcionario.email, setor.nome as NomeSetor, "
@@ -173,7 +202,13 @@ public class FuncionarioDao extends Funcionario {
         }
         return funcionario;
     }
-
+    /**
+     * Método para retornar o funcionario pelo seu usuário 
+     *
+     * @author Lucas Silva   
+     * @param usuario - id do funcionário que será pesquisado
+     * @return Funcionario - retornar o objeto funcionário preenchido  
+     */
     public Funcionario getFuncionarioByUsuario(String usuario) {
         Funcionario funcionario = new Funcionario();
         String sql = "Select funcionario.idPermissao, permissao.nome as NomePermissao, funcionario.nome, funcionario.id, funcionario.cpf, funcionario.usuarioSistema,funcionario.idGestor,funcionario.isGestor,funcionario.idHorario,funcionario.email, setor.nome as NomeSetor, "
@@ -211,7 +246,13 @@ public class FuncionarioDao extends Funcionario {
         }
         return funcionario;
     }
-
+    /**
+     * Método para retornar o funcionario pelo seu nome 
+     *
+     * @author Lucas Silva   
+     * @param nome - nome do funcionário que será pesquisado
+     * @return List - retorna a lista de funcionário com nomes parecidos na tela de cadastro
+     */
     public List<Funcionario> listarFuncionarios(String nome) {
         ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
         String sql = "Select funcionario.idPermissao, permissao.nome as NomePermissao, funcionario.id, funcionario.nome, funcionario.cpf, funcionario.usuarioSistema, funcionario.idGestor, funcionario.isGestor, funcionario.idHorario, funcionario.email, setor.nome as NomeSetor, "
@@ -252,7 +293,13 @@ public class FuncionarioDao extends Funcionario {
         }
         return funcionarios;
     }
-
+    /**
+     * Método para excluir o funcionario pelo seu id
+     *
+     * @author Lucas Silva   
+     * @param id - id do funcionário que será excluido
+     * @return List - retorna a lista de funcionário com nomes parecidos na tela de cadastro
+     */
     public String excluir(int id) {
         String sql = "Delete from funcionario where id = ?";
         try {

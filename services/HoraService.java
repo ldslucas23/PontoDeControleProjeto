@@ -1,10 +1,14 @@
-
 package pontoDeControle.services;
-
+/**Classe fazer o a comunicação entre a View e o banco de dados para manipular objetos do tipo Hora
+* @author Lucas Silva
+* @version 1.00
+* @since Release 01 da aplicação
+*/
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -12,12 +16,18 @@ import pontoDeControle.dao.HoraDao;
 import pontoDeControle.model.Hora;
 import pontoDeControle.model.PlanilhaHora;
 
-
 public class HoraService {
 
     public void salvarHora(Hora hora) {
         HoraDao horaDao = new HoraDao();
         horaDao.salvarHora(hora);
+    }
+
+    public int updateHora(Hora hora) {
+        int fechar;
+        HoraDao horaDao = new HoraDao();
+        fechar = horaDao.updateHora(hora);
+        return fechar;
     }
 
     public int diferencaHoras(int idFunc) {
@@ -60,8 +70,8 @@ public class HoraService {
         HoraDao horaDao = new HoraDao();
         return horaDao.pegarIdHora(idFunc);
     }
-    
-    public String pegarHoraInicial(int idFunc){
+
+    public Date pegarHoraInicial(int idFunc) {
         HoraDao horaDao = new HoraDao();
         return horaDao.pegaHoraInicial(idFunc);
     }

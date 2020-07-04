@@ -1,5 +1,9 @@
 package pontoDeControle.model;
-
+/**Classe para objetos do tipo Permissão, onde serão contidos, valores e métodos para o mesmo.
+* @author Lucas Silva
+* @version 1.00
+* @since Release 01 da aplicação
+*/
 public class PermissaoUsuario {
     int id;
     String nome;
